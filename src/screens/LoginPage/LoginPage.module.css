@@ -2,7 +2,18 @@ html,
 body {
   overflow-x: hidden !important;
 }
+
 /* ===== Login Modal CSS Start ===== */
+
+/* = Nasiru's hide and show password style = */
+
+.show {
+  position: absolute;
+  right: 10%;
+  font-weight: normal;
+  top: 42%;
+}
+
 #grid_wrapper {
   align-items: left;
 }

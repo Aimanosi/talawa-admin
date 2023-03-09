@@ -40,6 +40,7 @@ function LoginPage(): JSX.Element {
     email: '',
     password: '',
   });
+  const [show, setShow] = useState(false);
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -203,6 +204,10 @@ function LoginPage(): JSX.Element {
   if (componentLoader || loginLoading || signinLoading || recaptchaLoading) {
     return <div className={styles.loader}></div>;
   }
+
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   return (
     <>
@@ -406,21 +411,27 @@ function LoginPage(): JSX.Element {
                     });
                   }}
                 />
+
                 <label>{t('password')}</label>
-                <input
-                  type="password"
-                  id="password"
-                  className="input_box_second"
-                  placeholder={t('enterPassword')}
-                  required
-                  value={formState.password}
-                  onChange={(e) => {
-                    setFormState({
-                      ...formState,
-                      password: e.target.value,
-                    });
-                  }}
-                />
+                <div>
+                  <input
+                    type={show ? 'text' : 'password'}
+                    id="password"
+                    className="input_box_second"
+                    placeholder={t('enterPassword')}
+                    required
+                    value={formState.password}
+                    onChange={(e) => {
+                      setFormState({
+                        ...formState,
+                        password: e.target.value,
+                      });
+                    }}
+                  />
+                  <label className={styles.show} onClick={handleShow}>
+                    {show ? 'Hide' : 'Show'}
+                  </label>
+                </div>
                 <div className="googleRecaptcha">
                   <ReCAPTCHA
                     ref={recaptchaRef}
