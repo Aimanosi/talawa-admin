@@ -416,11 +416,11 @@ function LoginPage(): JSX.Element {
                 <div>
                   <input
                     type={show ? 'text' : 'password'}
-                    id="password"
                     className="input_box_second"
                     placeholder={t('enterPassword')}
                     required
                     value={formState.password}
+                    data-testid="password"
                     onChange={(e) => {
                       setFormState({
                         ...formState,
@@ -428,7 +428,12 @@ function LoginPage(): JSX.Element {
                       });
                     }}
                   />
-                  <label className={styles.show} onClick={handleShow}>
+                  <label
+                    id="showPassword"
+                    className={styles.show}
+                    onClick={handleShow}
+                    data-testid="showPassword"
+                  >
                     {show ? 'Hide' : 'Show'}
                   </label>
                 </div>
