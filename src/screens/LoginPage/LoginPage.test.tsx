@@ -325,7 +325,7 @@ describe('Testing Login Page Screen', () => {
   });
 
   test('Testing password preview feature', async () => {
-    const { getByTestId } = render(
+    render(
       <MockedProvider addTypename={false} mocks={MOCKS}>
         <BrowserRouter>
           <Provider store={store}>
@@ -340,8 +340,8 @@ describe('Testing Login Page Screen', () => {
     await wait();
     userEvent.click(screen.getByTestId('loginModalBtn'));
 
-    const input = getByTestId('password') as HTMLInputElement;
-    const toggleText = getByTestId('showPassword');
+    const input = screen.getByTestId('password') as HTMLInputElement;
+    const toggleText = screen.getByTestId('showPassword');
     // password should be hidden
     expect(input.type).toBe('password');
     // click the toggle button to show password
